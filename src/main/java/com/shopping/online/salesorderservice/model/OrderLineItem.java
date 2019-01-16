@@ -6,11 +6,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="order_line_item")
 public class OrderLineItem {
 
+	public OrderLineItem() {
+	}
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id")
+	private Integer id;
+	
+	@NotNull
+	@Column(name="item_name")
+	private String itemName;
+	
+	@NotNull
+	@Column(name="item_quantity")
+	private Integer itemQuantity;
+	
+	@NotNull
+	@Column(name="order_id")
+	private Integer orderId;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -43,21 +64,5 @@ public class OrderLineItem {
 		this.orderId = orderId;
 	}
 
-	public OrderLineItem() {
-	}
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "id")
-	private Integer id;
-	
-	@Column(name="item_name")
-	private String itemName;
-	
-	@Column(name="item_quantity")
-	private Integer itemQuantity;
-	
-	@Column(name="order_id")
-	private Integer orderId;
 }
 

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="sales_order")
@@ -21,15 +22,19 @@ public class SalesOrder {
 	@Column(name = "id")
 	private Integer id;
 	
+	@NotNull
 	@Column(name="order_date")
 	private Date orderDate;
 	
+	@NotNull
 	@Column(name="cust_id")
 	private Integer custId;
 	
+	@NotNull
 	@Column(name="order_desc")
 	private String orderDesc;
 	
+	@NotNull
 	@Column(name="total_price")
 	private Integer totalPrice;
 

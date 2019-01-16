@@ -1,5 +1,6 @@
 package com.shopping.online.salesorderservice.resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +13,8 @@ import com.shopping.online.salesorderservice.repository.SalesOrderRepository;
 @RequestMapping("/salesorderservice")
 public class SalesOrderResource {
 
+	@Autowired
 	private SalesOrderRepository salesOrderRepository;
-	
-	public SalesOrderResource(SalesOrderRepository salesOrderRepository) {
-		this.salesOrderRepository = salesOrderRepository;
-	}
 	
 	@PostMapping("/orders")
 	public Integer addOrder(@RequestBody SalesOrder salesOrder){
