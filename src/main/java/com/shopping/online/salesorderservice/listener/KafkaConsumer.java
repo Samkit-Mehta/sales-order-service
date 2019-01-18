@@ -18,11 +18,14 @@ public class KafkaConsumer {
 	@Autowired
 	CustomerSalesOrderRepository customerSalesOrderRepository;
 	
+	@Autowired
+	ObjectMapper objectMapper;
+	
     @KafkaListener(topics = "customer-created", groupId = "group_id")
     public void consume(String message) {
         System.out.println("Consumed message: " + message);
         try {
-			Customer customer = new ObjectMapper().readValue(message, Customer.class);
+			Customer customer = objectMapper.readValue(message, Customer.class);
 			customerSalesOrderRepository.save(customer);
 		} catch (JsonParseException e) {
 			e.printStackTrace();
